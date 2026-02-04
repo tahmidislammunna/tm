@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahmid Islam Munna | SSC 2026 Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+    <style>
+        :root { --primary: #4a90e2; --secondary: #50e3c2; }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        .font-bengali { font-family: 'Hind Siliguri', sans-serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+        .hero-bg {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(74, 144, 226, 0.1) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(80, 227, 194, 0.1) 0, transparent 50%);
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Parallax Floating Shapes */
+        .shape { position: absolute; opacity: 0.3; z-index: 0; pointer-events: none; }
+
+        /* Glassmorphism */
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
+
+        /* FIXED Fullscreen Timer for Large Screens */
+        #timer-container:fullscreen {
+            width: 100vw !important;
+            height: 100vh !important;
+            background: white !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 2rem;
+        }
+        #timer-container:fullscreen .timer-grid { gap: 2.5vw !important; }
+        #timer-container:fullscreen .time-box { 
+            padding: 4vw !important; 
+            border-radius: 2vw !important;
+            min-width: 18vw;
+        }
+        #timer-container:fullscreen .time-val { font-size: 10vw !important; line-height: 1; }
+        #timer-container:fullscreen .time-label { font-size: 1.5vw !important; margin-top: 1vh; }
+        #timer-container:fullscreen h3 { font-size: 3.5vw !important; margin-bottom: 5vh !important; }
+        #timer-container:fullscreen .expand-hint { display: none; }
+
+        /* Animated Circular Profile */
+        .profile-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+        @media (min-width: 1024px) {
+            .profile-wrapper { width: 280px; height: 280px; }
+        }
+
+        .profile-ring {
+            position: absolute;
+            inset: -10px;
+            border: 3px dashed var(--primary);
+            border-radius: 50%;
+            animation: spin 15s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hero-img-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+        }
+
+        /* Pulsing Button Animation */
+        .pulse-btn {
+            animation: pulse-blue 2s infinite;
+        }
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(74, 144, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+        }
+
+        .skill-card { transition: all 0.3s ease; border-left: 4px solid #4a90e2; }
+        .skill-card:hover { transform: translateX(10px); background: #f1f5f9; }
+
+        .rethink-border { border: 2px solid transparent; background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4a90e2, #50e3c2) border-box; }
+        
+        /* Hide scrollbar for the stats row on mobile */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="hero-bg text-slate-800">
+
+    <div class="shape top-20 left-10 w-24 h-24 bg-blue-300 rounded-full blur-3xl" data-speed="2"></div>
+    <div class="shape bottom-40 left-20 w-32 h-32 bg-teal-200 rounded-lg blur-2xl" data-speed="-3"></div>
+
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="font-montserrat font-extrabold text-xl md:text-2xl text-blue-600 tracking-tighter uppercase">Tahmid Munna</div>
+            <div class="hidden md:flex space-x-8 font-semibold text-sm">
+                <a href="#home" class="hover:text-blue-600 transition">Home</a>
+                <a href="#about" class="hover:text-blue-600 transition">Biography</a>
+                <a href="#rethink" class="hover:text-blue-600 transition">reThink Role</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Expertise</a>
+                <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg">Contact</a>
+            </div>
+            <div class="md:hidden text-blue-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen pt-24 md:pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <div data-aos="fade-right" class="order-2 lg:order-1">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-12 h-[2px] bg-blue-600"></span>
+                    <span class="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm">SSC 2026 Candidate</span>
+                </div>
+                <h1 class="text-4xl md:text-7xl font-montserrat font-extrabold leading-tight mb-2">
+                    Tahmid Islam <span class="text-blue-600">Munna</span>
+                </h1>
+
+                <div class="h-8 mb-6">
+                    <span id="typing" class="text-lg md:text-2xl font-semibold text-slate-700 font-bengali"></span>
+                </div>
+
+                <div class="flex gap-3 mb-8 overflow-x-auto pb-2 no-scrollbar">
+                    <div class="glass p-3 rounded-xl min-w-[120px] md:min-w-[140px] border-blue-100 shadow-sm">
+                        <p class="text-[10px] uppercase font-bold text-blue-600 mb-1">The Mission</p>
+                        <p class="text-xs font-bold text-slate-700">SSC 2026</p>
+                    </div>
+                    <div class="glass p-3 rounded-xl min-w-[120px] md:min-w-[140px] border-teal-100 shadow-sm">
+                        <p class="text-[10px] uppercase font-bold text-teal-600 mb-1">The Hustle</p>
+                        <p class="text-xs font-bold text-slate-700">2K+ Students</p>
+                    </div>
+                    <div class="glass p-3 rounded-xl min-w-[120px] md:min-w-[140px] border-orange-100 shadow-sm">
+                        <p class="text-[10px] uppercase font-bold text-orange-600 mb-1">The Passion</p>
+                        <p class="text-xs font-bold text-slate-700">Learning & Winnig</p>
+                    </div>
+                </div>
+
+                <p class="text-base md:text-lg text-slate-600 mb-8 leading-relaxed italic">
+                    "Redesigning the way we think, one student at a time."
+                </p>
+                
+                <div class="bg-white/50 border border-slate-100 p-5 rounded-2xl mb-10 max-w-sm shadow-sm backdrop-blur-sm">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Today's Target</p>
+                        <p class="text-xs font-extrabold text-blue-600">85% Completed</p>
+                    </div>
+                    <p class="text-sm font-bold text-slate-700 mb-3">Physics Chapter 4 - Atomic Theory</p>
+                    <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-600 w-[85%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="enterFullScreen()" class="bg-blue-600 text-white px-6 md:px-10 py-4 rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition shadow-xl text-sm md:text-base">
+                        Turn ON: Focus Mode
+                    </button>
+                    <a href="https://sites.google.com/view/tahmidmunna" target="_blank" class="bg-white border-2 border-slate-200 px-6 md:px-10 py-4 rounded-2xl font-bold hover:bg-slate-50 transition text-sm md:text-base">Explore My Work</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center lg:items-end gap-8 order-1 lg:order-2" data-aos="fade-left">
+                <div class="profile-wrapper lg:-translate-x-[75px]">
+                    <div class="profile-ring"></div>
+                    <div class="hero-img-container">
+                        <img src="https://scontent.fdac177-1.fna.fbcdn.net/v/t39.30808-6/488989903_1704046620178097_7728539997586529527_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFFJ5pZFsPVrLkaOdE5TiIslVVfyRYifPWVVV_JFiJ89S43_quaBKtdaRok31onlv5YVRwvPHQ6kTCeoo4xpgcM&_nc_ohc=FR6Y_pJmc3oQ7kNvwErlng7&_nc_oc=Adl_a9sml0mDi4_SwHzjx1IKGzMnQ7VWchHcHPqpB23JHjGlGv6kQzuB7XEUrXZUWHw&_nc_zt=23&_nc_ht=scontent.fdac177-1.fna&_nc_gid=OUVIKtIWWmz-M24-22dAYQ&oh=00_Afu8ov1EVxOXIOdqq2syJo0HKe6HHW3xVx6fZBqHWi2SqQ&oe=6987C193" alt="Tahmid Islam Munna" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div id="timer-container" class="glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl w-full max-w-md border-2 border-blue-50 relative">
+                    <button onclick="enterFullScreen()" class="expand-hint absolute top-6 right-6 text-slate-300 hover:text-blue-600 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </button>
+
+                    <h3 class="font-bengali text-lg md:text-xl text-center mb-6 font-bold text-slate-700">এসএসসি পরীক্ষার আর বাকি 🙂</h3>
+                    
+                    <div class="timer-grid grid grid-cols-4 gap-2 text-center">
+                        <div class="time-box bg-slate-900 text-white p-2 md:p-4 rounded-xl md:rounded-2xl">
+                            <span id="days" class="time-val text-xl md:text-2xl font-bold block">00</span>
+                            <span class="time-label text-[8px] md:text-[10px] uppercase opacity-60 font-bold">Days</span>
+                        </div>
+                        <div class="time-box bg-blue-600 text-white p-2 md:p-4 rounded-xl md:rounded-2xl">
+                            <span id="hours" class="time-val text-xl md:text-2xl font-bold block">00</span>
+                            <span class="time-label text-[8px] md:text-[10px] uppercase opacity-60 font-bold">Hrs</span>
+                        </div>
+                        <div class="time-box bg-white p-2 md:p-4 rounded-xl md:rounded-2xl border border-slate-100 shadow-sm">
+                            <span id="minutes" class="time-val text-xl md:text-2xl font-bold block text-slate-800">00</span>
+                            <span class="time-label text-[8px] md:text-[10px] uppercase text-slate-400 font-bold">Min</span>
+                        </div>
+                        <div class="time-box bg-orange-500 text-white p-2 md:p-4 rounded-xl md:rounded-2xl">
+                            <span id="seconds" class="time-val text-xl md:text-2xl font-bold block">00</span>
+                            <span class="time-label text-[8px] md:text-[10px] uppercase opacity-60 font-bold">Sec</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-blue-600 w-0 transition-all duration-1000"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://api.whatsapp.com/send/?phone=8801720990882&text&app_absent=0" target="_blank" class="fixed bottom-8 right-8 z-[100] pulse-btn bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.458 5.489 3.738 7.153V22l3.39-1.86c.82.228 1.687.351 2.583.351 5.523 0 10-4.145 10-9.258S17.523 2 12 2z"/></svg>
+    </a>
+
+    <section id="about" class="py-16 md:py-24 px-6 bg-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 md:mb-20 text-center" data-aos="fade-up">
+                The Journey of <span class="text-blue-600">Tahmid</span>
+            </h2>
+            
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 via-teal-500 to-orange-500 rounded-full opacity-20"></div>
+
+                <div class="mb-12 md:mb-16 relative flex flex-col md:flex-row items-center" data-aos="fade-right">
+                    <div class="md:w-1/2 md:pr-16 w-full pl-12 md:pl-0 text-left md:text-right">
+                        <div class="glass p-6 md:p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-50 hover:scale-[1.02] transition-transform duration-300 relative">
+                            <span class="text-blue-600 font-bold text-xs uppercase tracking-widest">2024 - Curiosity</span>
+                            <h4 class="text-xl md:text-2xl font-extrabold mt-2 text-slate-800 italic">Digital Dive</h4>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed font-bengali">
+                                শুরুটা ছিল ইন্টারনেটের রহস্য উন্মোচন দিয়ে। SEO এবং Content Strategy নিয়ে পড়াশোনা শুরু করে নিজেকে একজন Digital Strategist হিসেবে গড়ার পথে প্রথম ধাপ।
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-[10px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                </div>
+
+                <div class="mb-12 md:mb-16 relative flex flex-col md:flex-row items-center" data-aos="fade-left">
+                    <div class="absolute left-[10px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                    <div class="md:w-1/2 md:ml-auto md:pl-16 w-full pl-12 text-left">
+                        <div class="glass p-6 md:p-8 rounded-[2rem] shadow-xl shadow-teal-900/5 border border-slate-50 hover:scale-[1.02] transition-transform duration-300">
+                            <span class="text-teal-500 font-bold text-xs uppercase tracking-widest">2025 - Leadership</span>
+                            <h4 class="text-xl md:text-2xl font-extrabold mt-2 text-slate-800 italic">Study Squad & Scouting</h4>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed font-bengali">
+                                প্রতিষ্ঠা করলেন Study Squad। সাভার অঞ্চলে স্টুডেন্টদের মাঝে স্টাডি রিসোর্স শেয়ারিং এবং লিডারশিপের এক নতুন অধ্যায় শুরু।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center" data-aos="fade-right">
+                    <div class="md:w-1/2 md:pr-16 w-full pl-12 md:pl-0 text-left md:text-right">
+                        <div class="glass p-6 md:p-8 rounded-[2rem] shadow-xl shadow-orange-900/5 border border-slate-50 hover:scale-[1.02] transition-transform duration-300">
+                            <span class="text-orange-500 font-bold text-xs uppercase tracking-widest">2026 - Professionalism</span>
+                            <h4 class="text-xl md:text-2xl font-extrabold mt-2 text-slate-800 italic">Growth Partner @ reThink</h4>
+                            <p class="text-slate-600 mt-3 text-sm leading-relaxed font-bengali">
+                                বর্তমানে reThink-এর অফিসিয়াল পার্টনার হিসেবে ২০০০+ শিক্ষার্থীর কাছে এডুকেশনকে পৌঁছে দিচ্ছেন এক নতুন আঙ্গিকে।
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-[10px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rethink" class="py-16 md:py-24 px-6 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col items-center mb-12 md:mb-16 text-center">
+                <img src="https://rethink.ac/storage/settings/CDsvkB3l6NsPo4QQKIpSX9WZopGiVPlsoiAXGWAN.png" alt="reThink Logo" class="h-10 md:h-12 mb-6 grayscale hover:grayscale-0 transition duration-500">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Impact at <span class="text-blue-600">reThink</span></h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 hover:-translate-y-2 transition-all duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3">Scripting</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Cinematic production scripts focusing on Hook-Retain-Action models.</p>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 hover:-translate-y-2 transition-all duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3">Expansion</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Leading Savar Chapter to grow the reach among 2,000+ potential students.</p>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 hover:-translate-y-2 transition-all duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3">Marketing</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Creating Meme-Marketing strategies to humanize complex academic subjects.</p>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 hover:-translate-y-2 transition-all duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-3">Liaison</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Acting as a bridge between the internal production and student community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 md:py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16">The Expertise <span class="text-blue-600">Matrix</span></h2>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="p-6 md:p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50" data-aos="zoom-in">
+                    <h5 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-blue-600 rounded-full"></span> Digital Strategy
+                    </h5>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">SEO Audit</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Keyword Mapping</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Social ROI</span>
+                        <span class="bg-blue-600 px-4 py-2 rounded-xl text-sm font-semibold text-white">Ahrefs</span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50" data-aos="zoom-in" data-aos-delay="100">
+                    <h5 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-teal-500 rounded-full"></span> Creative Arts
+                    </h5>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Scriptwriting</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Ad Copy</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">UI Design</span>
+                        <span class="bg-teal-500 px-4 py-2 rounded-xl text-sm font-semibold text-white">Canva Pro</span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 sm:col-span-2 lg:col-span-1" data-aos="zoom-in" data-aos-delay="200">
+                    <h5 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-orange-500 rounded-full"></span> Tech Stack
+                    </h5>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">HTML5</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Tailwind CSS</span>
+                        <span class="bg-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm border border-slate-100 text-slate-700">Prompt Eng.</span>
+                        <span class="bg-orange-500 px-4 py-2 rounded-xl text-sm font-semibold text-white">AI Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-cta" class="py-16 md:py-20 px-6">
+        <div class="max-w-4xl mx-auto bg-slate-900 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-[100px]"></div>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-6 relative z-10">
+                Let's Build the <span class="text-blue-400">Future</span> Together
+            </h2>
+            <p class="text-slate-400 mb-10 max-w-xl mx-auto relative z-10 text-sm md:text-base">
+                আপনি কি আপনার প্রোজেক্ট বা স্টাডি প্ল্যান নিয়ে আলোচনা করতে চান? আমি সবসময় নতুন আইডিয়া নিয়ে কাজ করতে পছন্দ করি।
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 relative z-10">
+                <a href="mailto:tahmidmunna@yahoo.com" class="bg-blue-600 text-white px-6 md:px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg text-sm md:text-base">
+                    Send an Email
+                </a>
+                <a href="http://m.me/tahmidislammunna" class="bg-white/10 text-white border border-white/20 backdrop-blur-md px-6 md:px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition text-sm md:text-base">
+                    Messenger
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-12 text-center bg-white border-t border-slate-100">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://www.facebook.com/tahmidislammunna" class="text-slate-400 hover:text-blue-600">Facebook</a>
+            <a href="https://www.linkedin.com/in/tahmid-islam-munna" class="text-slate-400 hover:text-blue-600">LinkedIn</a>
+            <a href="https://www.youtube.com/@tahmidislammunna" class="text-slate-400 hover:text-blue-600">YouTube</a>
+        </div>
+        <p class="text-slate-400 text-sm">&copy; 2026 Tahmid Munna. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        new TypeIt("#typing", {
+            strings: ["Growth Partner @ reThink", "SEO & Content Strategist", "Founder of Study Squad", "Future Engineer"],
+            speed: 50, breakLines: false, loop: true, nextStringDelay: 2000
+        }).go();
+
+        document.addEventListener("mousemove", (e) => {
+            document.querySelectorAll(".shape").forEach(shape => {
+                const speed = shape.getAttribute('data-speed');
+                const x = (window.innerWidth - e.pageX * speed) / 100;
+                const y = (window.innerHeight - e.pageY * speed) / 100;
+                shape.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+
+        const targetDate = new Date("April 16, 2026 00:00:00").getTime();
+        const startDate = new Date("January 1, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            const total = targetDate - startDate;
+            const elapsed = now - startDate;
+            document.getElementById("progress-bar").style.width = Math.min((elapsed / total) * 100, 100) + "%";
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function enterFullScreen() {
+            const elem = document.getElementById("timer-container");
+            if (elem.requestFullscreen) { elem.requestFullscreen(); }
+            else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); }
+        }
+    </script>
+</body>
+</html>
